@@ -6,34 +6,93 @@
     <title>Arkaan Archive • Personal Minimalist Log</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
-    
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>𓁹</text></svg>">
     
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    colors: {
-                        'cyber-gray': '#0a0a0f',
-                        'soft-gray': '#1a1a24',
-                        'neon-teal': 'rgba(0, 255, 221, 0.3)',
-                        'neon-blue': 'rgba(0, 150, 255, 0.2)'
-                    },
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif'],
-                        'jetbrains': ['JetBrains Mono', 'monospace']
-                    },
-                    animation: {
-                        'slow-pulse': 'slowPulse 3s ease-in-out infinite',
-                        'fade-in': 'fadeIn 0.8s ease-out',
-                        'blink': 'blink 1.2s step-end infinite'
-                    },
-                    keyframes: {
+                    colors: { 'cyber-gray': '#0a0a0f', 'soft-gray': '#1a1a24', 'neon-teal': '#00ffdd' },
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'], 'jetbrains': ['JetBrains Mono', 'monospace'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-cyber-gray text-gray-300 min-h-screen overflow-x-hidden">
+    <div id="particles"></div>
+    <div class="scanline"></div>
+
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <div class="flex justify-between items-center mb-12 opacity-50 font-jetbrains text-[10px] tracking-widest uppercase">
+            <div id="live-time">00:00:00</div>
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                    <span id="ping-value">24MS</span>
+                </div>
+            </div>
+        </div>
+
+        <header class="mt-16 mb-20 text-center">
+            <div class="relative inline-block mb-8 group">
+                <div id="profile-avatar" class="w-24 h-24 rounded-full bg-soft-gray flex items-center justify-center border border-gray-800 group-hover:border-neon-teal transition-all duration-700 cursor-pointer">
+                    <div class="text-3xl">𓁹</div>
+                </div>
+                <div class="absolute -inset-2 rounded-full border border-neon-teal/10 animate-pulse"></div>
+            </div>
+            
+            <div class="mb-6">
+                <h1 class="font-jetbrains text-2xl tracking-tighter hover:text-neon-teal transition-colors">
+                    arkaan<span class="text-neon-teal">@</span>archive
+                </h1>
+                <p class="text-[10px] text-gray-600 mt-2 tracking-[0.4em] uppercase">Human / Indie / Void</p>
+            </div>
+            
+            <div class="bg-black/40 backdrop-blur-md border border-gray-800 rounded-lg p-5 max-w-sm mx-auto text-left shadow-2xl">
+                <div class="flex gap-1.5 mb-4">
+                    <div class="w-2 h-2 rounded-full bg-red-500/30"></div>
+                    <div class="w-2 h-2 rounded-full bg-yellow-500/30"></div>
+                    <div class="w-2 h-2 rounded-full bg-green-500/30"></div>
+                </div>
+                <div class="font-jetbrains text-xs leading-relaxed">
+                    <span class="text-neon-teal">❯</span> <span id="terminal-text">initializing_system...</span><span class="animate-blink">_</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="space-y-10">
+            <section class="opacity-70 hover:opacity-100 transition-opacity">
+                <h2 class="text-[10px] font-jetbrains text-gray-500 uppercase tracking-[0.5em] mb-8 flex items-center gap-3">
+                    <span class="h-[1px] w-8 bg-gray-800"></span> Recent Logs
+                </h2>
+                <div class="grid gap-4">
+                    <div class="p-4 rounded border border-gray-900 bg-white/[0.01] hover:bg-white/[0.03] transition-all">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-[10px] font-jetbrains text-gray-600">2026.01.04</span>
+                            <span class="px-2 py-0.5 rounded-full bg-neon-teal/5 text-[9px] text-neon-teal">STABLE</span>
+                        </div>
+                        <p class="text-sm font-light">System successfully migrated to Vercel. Global deployment active.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="mt-32 mb-12 text-center opacity-20 text-[9px] font-jetbrains tracking-[0.3em] uppercase">
+            &copy; 2026 Arkaan Archive • Built for the void
+        </footer>
+    </div>
+
+    <script src="terminal.js"></script>
+    <script src="system.js"></script>
+    <script src="ui.js"></script>
+    <script src="particle.js"></script>
+    <script src="egg.js"></script>
+</body>
+</html>
                         slowPulse: {
                             '0%, 100%': { opacity: 0.3 },
                             '50%': { opacity: 0.6 }
